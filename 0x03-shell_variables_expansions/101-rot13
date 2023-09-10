@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Function to encode or decode text using ROT13
+rot13() {
+  tr 'A-Za-z' 'N-ZA-Mn-za-m'
+}
+
+# Check if an operation (encode or decode) is specified
+if [[ "$1" == "encode" ]]; then
+  read -p "Enter the text to encode: " text
+elif [[ "$1" == "decode" ]]; then
+  read -p "Enter the text to decode: " text
+else
+  echo "Usage: $0 [encode|decode]"
+  exit 1
+fi
+
+# Call the rot13 function with the input text and display the result
+encoded=$(echo "$text" | rot13)
+echo "Result: $encoded"
